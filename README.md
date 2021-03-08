@@ -1,5 +1,5 @@
 # PokemonVIPER
-<img src="./Demo/cover.png" alt="cover image - Android Viper Architecture">
+<img src="./cover.png" alt="cover image - Android Viper Architecture">
 
 ## Android VIPER Architecture Example 
 
