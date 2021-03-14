@@ -3,41 +3,42 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation"
+
     app:startDestination="@id/main_pokemon">
-    <activity
+    <fragment
         android:id="@+id/main_pokemon"
-        android:name="com.diaa.pokemonViperPattern.ui.main.MainActivity"
+        android:name="com.diaa.pokemonViperPattern.ui.main.MainFragment"
         android:label="mainActivity"
         app:startDestination="@id/pokemon_details"
-
         tools:layout="@layout/activity_main">
+        <action
+            android:id="@+id/action_main_pokemon_to_pokemon_details"
+            app:destination="@id/pokemon_details"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:launchSingleTop="false"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation"
+            app:popUpToInclusive="false" />
 
-    </activity>
-    <action
-        android:id="@+id/action_main_pokemon_to_pokemon_details"
-        app:destination="@id/pokemon_details"
-        app:enterAnim="@anim/fragment_close_enter"
-        app:exitAnim="@anim/fragment_fade_exit"
-        app:launchSingleTop="false"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/navigation"
-        app:popUpToInclusive="false" />
-    <activity
+    </fragment>
+
+    <fragment
         android:id="@+id/pokemon_details"
-        android:name="com.diaa.pokemonViperPattern.ui.details.DetailsActivity"
+        android:name="com.diaa.pokemonViperPattern.ui.details.DetailsFragment"
         android:label="details_activity"
         tools:layout="@layout/pokemon_list"
 
         >
+        <action
+            android:id="@+id/pokemon_details_to_act"
+            app:destination="@id/main_pokemon"
+            app:enterAnim="@anim/fragment_close_enter"
+            app:exitAnim="@anim/fragment_fade_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@id/navigation" />
+    </fragment>
 
-    </activity> 
-    <action
-        android:id="@+id/pokemon_details_to_act"
-        app:destination="@id/main_pokemon"
-        app:enterAnim="@anim/fragment_close_enter"
-        app:exitAnim="@anim/fragment_fade_exit"
-        app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-        app:popExitAnim="@anim/nav_default_pop_exit_anim"
-        app:popUpTo="@id/navigation" />
 </navigation>

@@ -1,12 +1,9 @@
 package com.diaa.pokemonViperPattern.ui.main
 
-import android.view.View
 import com.diaa.pokemonViperPattern.models.Pokemon
 import com.diaa.pokemonViperPattern.models.PokemonResponse
-import io.reactivex.Single
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
-import javax.inject.Inject
 
 interface MainContract {
     interface View {
@@ -19,7 +16,7 @@ interface MainContract {
 
     interface Presenter {
 
-        fun bindView(view: View,activity: MainActivity,activityView: android.view.View)
+        fun bindView(view: View, fragment: MainFragment, activityView: android.view.View)
         fun unBindView()
         fun onViewCreated()
         fun onItemClicked(pokemon: Pokemon)

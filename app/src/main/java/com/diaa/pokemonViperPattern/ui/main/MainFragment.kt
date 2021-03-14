@@ -1,38 +1,44 @@
 package com.diaa.pokemonViperPattern.ui.main
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.diaa.pokemonViperPattern.R
 import com.diaa.pokemonViperPattern.databinding.ActivityMainBinding
 import com.diaa.pokemonViperPattern.models.Pokemon
 import com.diaa.pokemonViperPattern.ui.main.adpters.PokemonAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
-
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity(), MainContract.View {
+class MainFragment : Fragment(), MainContract.View {
+
     @Inject
     lateinit var presenter: MainPresenter
     private lateinit var binding: ActivityMainBinding
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        binding = ActivityMainBinding.inflate(inflater, container, false)
+        val root: View = binding.root
+
         initView()
-        presenter.bindView(this, this,binding.root)
+        presenter.bindView(this, this, binding.root)
         presenter.onViewCreated()
 
 
-
+        return root
     }
 
     private fun initView() {
-        val manager = LinearLayoutManager(this).apply { orientation = LinearLayoutManager.VERTICAL }
+        val manager =
+            LinearLayoutManager(activity).apply { orientation = LinearLayoutManager.VERTICAL }
         binding.pokemonRv.layoutManager = manager
     }
 
@@ -66,6 +72,6 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showMessage(msg: String) {
-        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show()
     }
 }

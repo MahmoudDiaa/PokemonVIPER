@@ -1,13 +1,13 @@
 package com.diaa.pokemonViperPattern.ui.details
 
-import com.diaa.pokemonViperPattern.models.Pokemon
+import android.view.View
+import androidx.navigation.Navigation
 
 
-class DetailsRouter:DetailsContract.Router {
+class DetailsRouter(private val activityView: View) : DetailsContract.Router {
     override fun finish() {
-        TODO("Not yet implemented")
+        Navigation.findNavController(activityView).popBackStack()
     }
-
 
 
 }

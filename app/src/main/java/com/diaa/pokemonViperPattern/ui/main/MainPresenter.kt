@@ -16,11 +16,11 @@ class MainPresenter @Inject constructor(
 
     override fun bindView(
         view: MainContract.View,
-        activity: MainActivity,
+        fragment: MainFragment,
         activityView: View
     ) {
         this.view = view
-       this.router=MainRouter(activity,activityView)
+       this.router=MainRouter(fragment,activityView)
     }
 
     override fun unBindView() {
