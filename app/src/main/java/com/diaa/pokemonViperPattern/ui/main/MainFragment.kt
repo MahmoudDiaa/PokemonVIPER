@@ -27,7 +27,6 @@ class MainFragment : Fragment(), MainContract.View {
     ): View {
         binding = ActivityMainBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
         initView()
         presenter.bindView(this, this, binding.root)
         presenter.onViewCreated()
